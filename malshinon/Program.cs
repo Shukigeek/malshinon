@@ -10,6 +10,8 @@ namespace malshinon
     {
         static void Main(string[] args)
         {
+            Reporter_flow report = new Reporter_flow();
+            report.Report();
         }
     }
 }

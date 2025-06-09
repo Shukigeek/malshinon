@@ -4,15 +4,53 @@ using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace malshinon
 {
     internal class Reporter_flow
     {
+        DAL dal = new DAL();
         public void Report()
         {
+            //first question to reporter
             Console.WriteLine("Hi, please enter your full name.");
-            string[] fullName = Console.ReadLine().Split(' ');
+            string[] fullName = Console.ReadLine().ToLower().Split(' ');
+            while (fullName.Length < 2)
+            {
+                Console.WriteLine("please enter valid full name..");
+                fullName = Console.ReadLine().ToLower().Split(' ');
+            }
+            
+            dal.SearchInPeopleTable(string.Join(" ", fullName.Take(fullName.Length - 1)), fullName.Last(), "reporter");
+            int IdReporter = dal.FindId(string.Join(" ", fullName.Take(fullName.Length - 1)), fullName.Last());
+            Console.WriteLine(IdReporter);
+
+
+
+            //seconed question to reporter
+            Console.WriteLine("enter your report...");
+            string fullReport = Console.ReadLine();
+            string[] fullReport1 = fullReport.Split();
+
+
+            //Assume names are always in Capitalized First and Last Name format (from instructions)
+            string targetFirstName = "";
+            string targetLastName = "";
+            for (int i = 0; i < fullReport.Length; i++) 
+            {
+                if (char.IsUpper(fullReport1[i][0]))
+                {
+                    targetFirstName = fullReport1[i].ToLower();
+                    targetLastName = fullReport1[i + 1].ToLower();
+                    break;
+                }
+            }
+            dal.SearchInPeopleTable(targetFirstName,targetLastName, "target");
+            int IdTarget = dal.FindId(targetFirstName, targetLastName);
+            Console.WriteLine(IdTarget);
+            dal.InsertReport(IdReporter, IdTarget, fullReport);
+            
         }
     }
 }

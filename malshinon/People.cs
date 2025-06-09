@@ -13,19 +13,19 @@ namespace malshinon
         string LastName;
         string SecretCode;
         string Type;
-        string NumReports;
-        string NumMention;
+        int NumReports;
+        int NumMention;
 
-        public People(int id,string firstName,string lastName,
-            string secretCode,string type,string numReports,string numMention)
+        public People(string firstName,string lastName,
+            string secretCode,string type)
         {
-            Id = id;
+            
             FirstName = firstName;
             LastName = lastName;
             SecretCode = secretCode;
             Type = type;
-            NumReports = numReports;
-            NumMention = numMention;
+            //NumReports = numReports;
+            //NumMention = numMention;
         }
     }
 }

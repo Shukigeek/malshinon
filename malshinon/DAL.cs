@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -53,18 +54,26 @@ namespace malshinon
                 Console.WriteLine($"General Error: {ex.Message}");
             }
         }
-        public void SearchInPeopleTable(string firstName, string lastName)
+        public void SearchInPeopleTable(string firstName, string lastName, string type)
         {
-            MySqlCommand cmd = null;
+            string query = @"SELECT p.id FROM People p WHERE p.first_name = @firstName AND p.last_name = @lastName";
             MySqlDataReader reader = null;
             try
             {
                 openConnection();
-                cmd = new MySqlCommand(query, _conn);
-                reader = cmd.ExecuteReader();
-                if (!reader.Read())
+                using (MySqlCommand cmd = new MySqlCommand(query, _conn))
                 {
-                    AddPeople(firstName, lastName);
+                    cmd.Parameters.AddWithValue("@firstName", firstName);
+                    cmd.Parameters.AddWithValue("@lastName", lastName);
+
+                    using (reader = cmd.ExecuteReader())
+                    {
+                        if (!reader.Read())
+                        {
+                            reader.Close();
+                            AddPeople(firstName, lastName, type);
+                        }
+                    }
                 }
             }
             catch (Exception ex)
@@ -80,11 +89,11 @@ namespace malshinon
             }
 
         }
-        public void AddPeople(string firstName,string lastName)
+        public void AddPeople(string firstName, string lastName, string type)
         {
             string secretCode = new Generate_secret_code().Generate();
-            string query = @"INSERT INTO people (first_name, last_name, secret_cade, type) " +
-                $"VALUES (@firstName, @lastName, @secretCode, 'reporter')";
+            string query = @"INSERT INTO people (first_name, last_name, secret_code, type) " +
+                $"VALUES (@firstName, @lastName, @secretCode, @type)";
             try
             {
                 openConnection();
@@ -93,29 +102,104 @@ namespace malshinon
                     cmd.Parameters.AddWithValue("@firstName", firstName);
                     cmd.Parameters.AddWithValue("@lastName", lastName);
                     cmd.Parameters.AddWithValue("@secretCode", secretCode);
+                    cmd.Parameters.AddWithValue("@type", type);
 
                     int rowsAffected = cmd.ExecuteNonQuery();
                     if (rowsAffected > 0)
                     {
-                        Console.WriteLine("Agent added successfully.");
+                        Console.WriteLine("person added successfully.");
                     }
                     else
                     {
-                        Console.WriteLine("No agent was added.");
+                        Console.WriteLine("No person was added.");
                     }
 
-                    Console.WriteLine("Agent added successfully.");
+                    //Console.WriteLine("Agent added successfully.");
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error adding agent: {ex.Message}");
+                Console.WriteLine($"Error adding person: {ex.Message}");
             }
             finally
             {
+
                 closeConnection();
             }
         }
-        
+        public int FindId(string firstName, string lastName)
+        {
+            string query = @"SELECT p.id FROM People p WHERE p.first_name = @firstName AND p.last_name = @lastName";
+            MySqlDataReader reader = null;
+            try
+            {
+                openConnection();
+                using (MySqlCommand cmd = new MySqlCommand(query, _conn))
+                {
+                    cmd.Parameters.AddWithValue("@firstName", firstName);
+                    cmd.Parameters.AddWithValue("@lastName", lastName);
+                    using (reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            int num = reader.GetInt32("id");
+                            return num;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error while fetching people: {ex.Message}");
+            }
+            finally
+            {
+                if (reader != null && !reader.IsClosed)
+                    reader.Close();
+
+                closeConnection();
+            }
+            return 0;
+        }
+        public void InsertReport(int reporter_id, int target_id, string full_report)
+        {
+            DateTime timeStamp = DateTime.Now;
+            string query = @"INSERT INTO IntelReports (reportr_id,target_id,text,timestamp)" +
+                "VALUES (@reporterID,@targetID,@fullReport,@timeStamp)";
+            try
+            {
+                openConnection();
+                using (MySqlCommand cmd = new MySqlCommand(query, _conn))
+                {
+                    cmd.Parameters.AddWithValue("@reporterID", reporter_id);
+                    cmd.Parameters.AddWithValue("@targetID", target_id);
+                    cmd.Parameters.AddWithValue("@fullReport", full_report);
+                    cmd.Parameters.AddWithValue("@timeStamp", timeStamp);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        Console.WriteLine("report added successfully.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("No report was added.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error adding report: {ex.Message}");
+            }
+            finally
+            {
+
+                closeConnection();
+            }
+        }
     }
 }
