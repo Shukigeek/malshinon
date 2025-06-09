@@ -200,15 +200,14 @@ namespace malshinon
         }
         public void IncrementColumn(string columnName ,int id)
         {
-            string query = @"UPDATE people SET @num_mentions = @num_mentions + 1 WHERE people.id = @id;";
+            string query = $"UPDATE people SET {columnName} = {columnName} + 1 WHERE people.id = @id;";
             try
             {
                 openConnection();
                 using (MySqlCommand cmd = new MySqlCommand(query, _conn))
                 {
                     cmd.Parameters.AddWithValue("@id", id);
-                    cmd.Parameters.AddWithValue("@num_mentions", columnName);
-
+                   
                     int rowsAffected = cmd.ExecuteNonQuery();
                     if (rowsAffected > 0)
                     {
@@ -231,7 +230,7 @@ namespace malshinon
             }
         }
         public void IncrementNumMentions(int id) => IncrementColumn("num_mentions", id);
-        public void IncrementNumReports(int id) => IncrementColumn("num_mentions", id);
+        public void IncrementNumReports(int id) => IncrementColumn("num_reports", id);
         public bool IsType(int id,string type)
         {
             string query = "SELECT p.type FROM people p WHERE p.id = @id";

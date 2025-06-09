@@ -54,7 +54,7 @@ namespace malshinon
             int IdTarget = dal.FindId(targetFirstName, targetLastName);
             if (dal.IsType(IdTarget, "reporter"))
             {
-                dal.UpdateType(IdReporter, "both");
+                dal.UpdateType(IdTarget, "both");
             }
             Console.WriteLine(IdTarget);
             dal.InsertReport(IdReporter, IdTarget, fullReport);
