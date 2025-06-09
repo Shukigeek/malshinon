@@ -57,8 +57,6 @@ namespace malshinon
         {
             MySqlCommand cmd = null;
             MySqlDataReader reader = null;
-            string query = $"SELECT p.id FROM People p WHERE p.first_name = {firstName} AND p.last_name = {lastName}";
-
             try
             {
                 openConnection();
