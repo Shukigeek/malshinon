@@ -36,7 +36,6 @@ namespace malshinon
                 _conn = null;
             }
         }
-
         public DAL()
         {
             try
