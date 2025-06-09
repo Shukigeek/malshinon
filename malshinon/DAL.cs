@@ -13,7 +13,6 @@ namespace malshinon
     {
         private string connStr = "server=localhost;user=root;password=;database=malshinon";
         private MySqlConnection _conn;
-
         public MySqlConnection openConnection()
         {
             if (_conn == null)
@@ -29,7 +28,6 @@ namespace malshinon
 
             return _conn;
         }
-
         public void closeConnection()
         {
             if (_conn != null && _conn.State == System.Data.ConnectionState.Open)
