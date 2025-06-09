@@ -232,5 +232,62 @@ namespace malshinon
         }
         public void IncrementNumMentions(int id) => IncrementColumn("num_mentions", id);
         public void IncrementNumReports(int id) => IncrementColumn("num_mentions", id);
+        public bool IsType(int id,string type)
+        {
+            string query = "SELECT p.type FROM people p WHERE p.id = @id";
+            try
+            {
+                openConnection();
+                using (MySqlCommand cmd = new MySqlCommand(query, _conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+                    var reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    { 
+                        return type == reader.GetString("type");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error geting type: {ex.Message}");
+            }
+            finally
+            {
+                closeConnection();
+            }
+            return false;
+        }
+        public void UpdateType(int id,string type)
+        {
+            string query = @"UPDATE people SET type = @type WHERE people.id = @id;";
+            try
+            {
+                openConnection();
+                using(MySqlCommand cmd = new MySqlCommand( query, _conn))
+                {
+                    cmd.Parameters.AddWithValue("@type", type);
+                    cmd.Parameters.AddWithValue("@id", id);
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        Console.WriteLine("update type to be both");
+                    }
+                    else
+                    {
+                        Console.WriteLine("type didnet update.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error updating person type: {ex.Message}");
+            }
+            finally
+            {
+                closeConnection();
+            }
+
+        }
     }
 }
