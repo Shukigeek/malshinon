@@ -50,7 +50,8 @@ namespace malshinon
             int IdTarget = dal.FindId(targetFirstName, targetLastName);
             Console.WriteLine(IdTarget);
             dal.InsertReport(IdReporter, IdTarget, fullReport);
-            
+            dal.IncrementNumReports(IdReporter);
+            dal.IncrementNumMentions(IdTarget);
         }
     }
 }

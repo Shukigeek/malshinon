@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS People(
     secret_code VARCHAR(50) UNIQUE,
     type ENUM('reporter','target','both','potential_agent'),
     num_reports INT DEFAULT(0),
-    num_mentons INT DEFAULT(0), 
+    num_mentions INT DEFAULT(0), 
     PRIMARY KEY(id)
 );
 -- creat intel reports table with columns
