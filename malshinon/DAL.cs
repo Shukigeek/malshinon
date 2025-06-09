@@ -201,15 +201,6 @@ namespace malshinon
                 closeConnection();
             }
         }
-        public void IncrementNumReports(int id)
-        {
-            string query = @"UPDATE people SET num_reports = num_reports + 1 WHERE people.id = @id;";
-            try
-            {
-                openConnection();
-                using (MySqlCommand cmd = new MySqlCommand(query, _conn))
-                {
-                    cmd.Parameters.AddWithValue("@id", id);
 
                     int rowsAffected = cmd.ExecuteNonQuery();
                     if (rowsAffected > 0)
