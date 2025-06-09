@@ -84,7 +84,7 @@ namespace malshinon
         }
         public void AddPeople(string firstName,string lastName)
         {
-            string secretCode = "*(^%$#$@#%^T%^";
+            string secretCode = new Generate_secret_code().Generate();
             string query = @"INSERT INTO people (first_name, last_name, secret_cade, type) " +
                 $"VALUES (@firstName, @lastName, @secretCode, 'reporter')";
             try
@@ -118,5 +118,6 @@ namespace malshinon
                 closeConnection();
             }
         }
+        
     }
 }
