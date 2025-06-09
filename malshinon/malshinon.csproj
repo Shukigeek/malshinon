@@ -98,6 +98,7 @@
     <Compile Include="DAL.cs" />
     <Compile Include="Generate secret code.cs" />
     <Compile Include="People.cs" />
+    <Compile Include="PeopleTable.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reporter flow.cs" />
