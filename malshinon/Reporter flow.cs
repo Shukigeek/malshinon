@@ -18,7 +18,6 @@ namespace malshinon
             //first question to reporter
             Console.WriteLine("Hi, please enter your full name.");
             string[] fullName = Console.ReadLine().ToLower().Split(' ');
-            //string[] fullName = a.Split(' ');
             while (fullName.Length < 2)
             {
                 Console.WriteLine("please enter valid full name..");
@@ -32,16 +31,11 @@ namespace malshinon
                 {
                     dal.UpdateType(IdReporter, "both");
                 }
-            //Console.WriteLine(IdReporter);
-
-
 
             //seconed question to reporter
             Console.WriteLine("enter your report...");
             string fullReport = Console.ReadLine();
             string[] fullReport1 = fullReport.Split();
-            //string fullReport = b;
-            //string[] fullReport1 = b.Split(' ');
 
             //Assume names are always in Capitalized First and Last Name format (from instructions)
             string targetFirstName = "";
@@ -61,7 +55,6 @@ namespace malshinon
             {
                 dal.UpdateType(IdTarget, "both");
             }
-            //Console.WriteLine(IdTarget);
             dal.InsertReport(IdReporter, IdTarget, fullReport);
             dal.IncrementNumReports(IdReporter);
             dal.IncrementNumMentions(IdTarget);
