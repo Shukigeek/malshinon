@@ -1,4 +1,6 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Google.Protobuf.Compiler;
+using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Asn1.X509.SigI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -51,9 +53,10 @@ namespace malshinon
                 Console.WriteLine($"General Error: {ex.Message}");
             }
         }
-        public void SearchInPeopleTable(string firstName, string lastName, string type)
+        public People SearchInPeopleTable(string firstName, string lastName, string type)
         {
             string query = @"SELECT p.id FROM People p WHERE p.first_name = @firstName AND p.last_name = @lastName";
+            People person = null;
             MySqlDataReader reader = null;
             try
             {
@@ -65,11 +68,16 @@ namespace malshinon
 
                     using (reader = cmd.ExecuteReader())
                     {
-                        if (!reader.Read())
+                        if (reader.Read())
+                        {
+                            person = new People(reader.GetInt32("id"), firstName, lastName, "", type, 0, 0);
+                        }
+                        if (person == null)
                         {
                             reader.Close();
-                            AddPeople(firstName, lastName, type);
+                            person = AddPeople(firstName, lastName, type);
                         }
+                        
                     }
                 }
             }
@@ -83,10 +91,10 @@ namespace malshinon
                     reader.Close();
 
                 closeConnection();
-            }
+            }return person;
 
         }
-        public void AddPeople(string firstName, string lastName, string type)
+        public People AddPeople(string firstName, string lastName, string type)
         {
             string secretCode = new Generate_secret_code().Generate();
             string query = @"INSERT INTO people (first_name, last_name, secret_code, type) " +
@@ -110,8 +118,17 @@ namespace malshinon
                     {
                         Console.WriteLine("No person was added.");
                     }
-
-                    //Console.WriteLine("Agent added successfully.");
+                    using (MySqlDataReader reader = cmd.ExecuteReader()) 
+                    {
+                        People person = new People(reader.GetInt32("id"),
+                            reader.GetString("first_name"),
+                            reader.GetString("last_name"),
+                            reader.GetString("secretCode_code"),
+                            reader.GetString("type"),
+                            reader.GetInt32("num_reports"),
+                            reader.GetInt32("num_mention"));
+                        return person;
+                    }
                 }
             }
             catch (Exception ex)
@@ -122,6 +139,7 @@ namespace malshinon
             {
                 closeConnection();
             }
+            return null;
         }
         public int FindId(string firstName, string lastName)
         {

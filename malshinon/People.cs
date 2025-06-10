@@ -8,24 +8,24 @@ namespace malshinon
 {
     internal class People
     {
-        int Id;
-        string FirstName;
-        string LastName;
-        string SecretCode;
-        string Type;
-        int NumReports;
-        int NumMention;
+        public int Id;
+        public string FirstName;
+        public string LastName;
+        public string SecretCode;
+        public string Type;
+        public int NumReports;
+        public int NumMention;
 
-        public People(string firstName,string lastName,
-            string secretCode,string type)
+        public People(int id, string firstName,string lastName,
+            string secretCode,string type,int numReports,int numMention)
         {
-            
+            Id = id;
             FirstName = firstName;
             LastName = lastName;
             SecretCode = secretCode;
             Type = type;
-            //NumReports = numReports;
-            //NumMention = numMention;
+            NumReports = numReports;
+            NumMention = numMention;
         }
     }
 }

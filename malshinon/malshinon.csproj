@@ -95,6 +95,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnalysisMenu.cs" />
     <Compile Include="Burst_Based.cs" />
     <Compile Include="DAL.cs" />
     <Compile Include="Generate secret code.cs" />

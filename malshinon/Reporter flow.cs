@@ -25,13 +25,14 @@ namespace malshinon
                 fullName = Console.ReadLine().ToLower().Split(' ');
             }
             
-            dal.SearchInPeopleTable(string.Join(" ", fullName.Take(fullName.Length - 1)), fullName.Last(), "reporter");
-            int IdReporter = dal.FindId(string.Join(" ", fullName.Take(fullName.Length - 1)), fullName.Last());
+            People person = dal.SearchInPeopleTable(string.Join(" ", fullName.Take(fullName.Length - 1)), fullName.Last(), "reporter"); //
+            //int IdReporter = dal.FindId(string.Join(" ", fullName.Take(fullName.Length - 1)), fullName.Last()); // 
+            int IdReporter = person.Id;
             if (dal.IsType(IdReporter, "target"))
                 {
                     dal.UpdateType(IdReporter, "both");
                 }
-            Console.WriteLine(IdReporter);
+            //Console.WriteLine(IdReporter);
 
 
 
@@ -54,13 +55,13 @@ namespace malshinon
                     break;
                 }
             }
-            dal.SearchInPeopleTable(targetFirstName,targetLastName, "target");
-            int IdTarget = dal.FindId(targetFirstName, targetLastName);
+            person = dal.SearchInPeopleTable(targetFirstName,targetLastName, "target");
+            int IdTarget = person.Id;
             if (dal.IsType(IdTarget, "reporter"))
             {
                 dal.UpdateType(IdTarget, "both");
             }
-            Console.WriteLine(IdTarget);
+            //Console.WriteLine(IdTarget);
             dal.InsertReport(IdReporter, IdTarget, fullReport);
             dal.IncrementNumReports(IdReporter);
             dal.IncrementNumMentions(IdTarget);
