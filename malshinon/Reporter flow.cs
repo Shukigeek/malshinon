@@ -11,11 +11,13 @@ namespace malshinon
     internal class Reporter_flow
     {
         DAL dal = new DAL();
+        Thresholds thresholds = new Thresholds();
         public void Report()
         {
             //first question to reporter
             Console.WriteLine("Hi, please enter your full name.");
             string[] fullName = Console.ReadLine().ToLower().Split(' ');
+            //string[] fullName = a.Split(' ');
             while (fullName.Length < 2)
             {
                 Console.WriteLine("please enter valid full name..");
@@ -36,7 +38,8 @@ namespace malshinon
             Console.WriteLine("enter your report...");
             string fullReport = Console.ReadLine();
             string[] fullReport1 = fullReport.Split();
-
+            //string fullReport = b;
+            //string[] fullReport1 = b.Split(' ');
 
             //Assume names are always in Capitalized First and Last Name format (from instructions)
             string targetFirstName = "";
@@ -60,6 +63,15 @@ namespace malshinon
             dal.InsertReport(IdReporter, IdTarget, fullReport);
             dal.IncrementNumReports(IdReporter);
             dal.IncrementNumMentions(IdTarget);
+            if (thresholds.IsPotentialAgent(IdReporter))
+            {
+                dal.UpdateType(IdReporter, "potential_agent");
+                Console.WriteLine($"{string.Join(" ",fullName)} is potiantial agent");
+            }
+            if (thresholds.ThreatAlert(IdTarget))
+            {
+                Console.WriteLine($"NOTICE: {targetFirstName} {targetLastName} is a potential thret!");
+            }
         }
     }
 }

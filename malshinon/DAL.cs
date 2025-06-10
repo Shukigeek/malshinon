@@ -270,7 +270,7 @@ namespace malshinon
                     int rowsAffected = cmd.ExecuteNonQuery();
                     if (rowsAffected > 0)
                     {
-                        Console.WriteLine("update type to be both");
+                        Console.WriteLine("update type");
                     }
                     else
                     {
@@ -288,5 +288,6 @@ namespace malshinon
             }
 
         }
+
     }
 }
