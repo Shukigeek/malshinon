@@ -12,6 +12,7 @@ namespace malshinon
     {
         DAL dal = new DAL();
         Thresholds thresholds = new Thresholds();
+        Burst_Based Burst_Based = new Burst_Based();
         public void Report()
         {
             //first question to reporter
@@ -70,8 +71,9 @@ namespace malshinon
             }
             if (thresholds.ThreatAlert(IdTarget))
             {
-                Console.WriteLine($"NOTICE: {targetFirstName} {targetLastName} is a potential thret!");
+                Console.WriteLine($"NOTICE: {targetFirstName} {targetLastName} is a potential thret!\n~~~~~~~~~~ dangerous ~~~~~~~~~~~`");
             }
+            Burst_Based.BurstAlerts(IdTarget);
         }
     }
 }

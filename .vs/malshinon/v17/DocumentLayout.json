@@ -3,32 +3,36 @@
   "WorkspaceRootPath": "C:\\Users\\shuki\\Desktop\\malshinon\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{80B58942-4B4A-433C-BB44-12DF62FCC3FF}|malshinon\\malshinon.csproj|c:\\users\\shuki\\desktop\\malshinon\\malshinon\\burst_based.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{80B58942-4B4A-433C-BB44-12DF62FCC3FF}|malshinon\\malshinon.csproj|solutionrelative:malshinon\\burst_based.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{80B58942-4B4A-433C-BB44-12DF62FCC3FF}|malshinon\\malshinon.csproj|c:\\users\\shuki\\desktop\\malshinon\\malshinon\\reporter flow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{80B58942-4B4A-433C-BB44-12DF62FCC3FF}|malshinon\\malshinon.csproj|solutionrelative:malshinon\\reporter flow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{80B58942-4B4A-433C-BB44-12DF62FCC3FF}|malshinon\\malshinon.csproj|C:\\Users\\shuki\\Desktop\\malshinon\\malshinon\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{80B58942-4B4A-433C-BB44-12DF62FCC3FF}|malshinon\\malshinon.csproj|solutionrelative:malshinon\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{80B58942-4B4A-433C-BB44-12DF62FCC3FF}|malshinon\\malshinon.csproj|C:\\Users\\shuki\\Desktop\\malshinon\\malshinon\\people.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{80B58942-4B4A-433C-BB44-12DF62FCC3FF}|malshinon\\malshinon.csproj|solutionrelative:malshinon\\people.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{80B58942-4B4A-433C-BB44-12DF62FCC3FF}|malshinon\\malshinon.csproj|C:\\Users\\shuki\\Desktop\\malshinon\\malshinon\\generate secret code.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{80B58942-4B4A-433C-BB44-12DF62FCC3FF}|malshinon\\malshinon.csproj|solutionrelative:malshinon\\generate secret code.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{80B58942-4B4A-433C-BB44-12DF62FCC3FF}|malshinon\\malshinon.csproj|c:\\users\\shuki\\desktop\\malshinon\\malshinon\\thresholds.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{80B58942-4B4A-433C-BB44-12DF62FCC3FF}|malshinon\\malshinon.csproj|solutionrelative:malshinon\\thresholds.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{80B58942-4B4A-433C-BB44-12DF62FCC3FF}|malshinon\\malshinon.csproj|C:\\Users\\shuki\\Desktop\\malshinon\\malshinon\\dal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{80B58942-4B4A-433C-BB44-12DF62FCC3FF}|malshinon\\malshinon.csproj|solutionrelative:malshinon\\dal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{80B58942-4B4A-433C-BB44-12DF62FCC3FF}|malshinon\\malshinon.csproj|C:\\Users\\shuki\\Desktop\\malshinon\\malshinon\\peopletable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{80B58942-4B4A-433C-BB44-12DF62FCC3FF}|malshinon\\malshinon.csproj|solutionrelative:malshinon\\peopletable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{80B58942-4B4A-433C-BB44-12DF62FCC3FF}|malshinon\\malshinon.csproj|c:\\users\\shuki\\desktop\\malshinon\\malshinon\\dal2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{80B58942-4B4A-433C-BB44-12DF62FCC3FF}|malshinon\\malshinon.csproj|solutionrelative:malshinon\\dal2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{80B58942-4B4A-433C-BB44-12DF62FCC3FF}|malshinon\\malshinon.csproj|C:\\Users\\shuki\\Desktop\\malshinon\\malshinon\\generate secret code.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{80B58942-4B4A-433C-BB44-12DF62FCC3FF}|malshinon\\malshinon.csproj|solutionrelative:malshinon\\generate secret code.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{80B58942-4B4A-433C-BB44-12DF62FCC3FF}|malshinon\\malshinon.csproj|C:\\Users\\shuki\\Desktop\\malshinon\\malshinon\\people.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{80B58942-4B4A-433C-BB44-12DF62FCC3FF}|malshinon\\malshinon.csproj|solutionrelative:malshinon\\people.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{80B58942-4B4A-433C-BB44-12DF62FCC3FF}|malshinon\\malshinon.csproj|C:\\Users\\shuki\\Desktop\\malshinon\\malshinon\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{80B58942-4B4A-433C-BB44-12DF62FCC3FF}|malshinon\\malshinon.csproj|solutionrelative:malshinon\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{80B58942-4B4A-433C-BB44-12DF62FCC3FF}|malshinon\\malshinon.csproj|c:\\users\\shuki\\desktop\\malshinon\\malshinon\\thresholds.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{80B58942-4B4A-433C-BB44-12DF62FCC3FF}|malshinon\\malshinon.csproj|solutionrelative:malshinon\\thresholds.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,7 +50,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
+              "Title": "Burst_Based.cs",
+              "DocumentMoniker": "C:\\Users\\shuki\\Desktop\\malshinon\\malshinon\\Burst_Based.cs",
+              "RelativeDocumentMoniker": "malshinon\\Burst_Based.cs",
+              "ToolTip": "C:\\Users\\shuki\\Desktop\\malshinon\\malshinon\\Burst_Based.cs*",
+              "RelativeToolTip": "malshinon\\Burst_Based.cs*",
+              "ViewState": "AgIAABEAAAAAAAAAAAAYwCMAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-10T11:43:09.232Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DAL.cs",
+              "DocumentMoniker": "C:\\Users\\shuki\\Desktop\\malshinon\\malshinon\\DAL.cs",
+              "RelativeDocumentMoniker": "malshinon\\DAL.cs",
+              "ToolTip": "C:\\Users\\shuki\\Desktop\\malshinon\\malshinon\\DAL.cs",
+              "RelativeToolTip": "malshinon\\DAL.cs",
+              "ViewState": "AgIAAGcAAAAAAAAAAAAowHYAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-09T08:26:00.385Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "Thresholds.cs",
               "DocumentMoniker": "C:\\Users\\shuki\\Desktop\\malshinon\\malshinon\\Thresholds.cs",
               "RelativeDocumentMoniker": "malshinon\\Thresholds.cs",
@@ -59,20 +89,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "PeopleTable.cs",
-              "DocumentMoniker": "C:\\Users\\shuki\\Desktop\\malshinon\\malshinon\\PeopleTable.cs",
-              "RelativeDocumentMoniker": "malshinon\\PeopleTable.cs",
-              "ToolTip": "C:\\Users\\shuki\\Desktop\\malshinon\\malshinon\\PeopleTable.cs",
-              "RelativeToolTip": "malshinon\\PeopleTable.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "DAL2.cs",
+              "DocumentMoniker": "C:\\Users\\shuki\\Desktop\\malshinon\\malshinon\\DAL2.cs",
+              "RelativeDocumentMoniker": "malshinon\\DAL2.cs",
+              "ToolTip": "C:\\Users\\shuki\\Desktop\\malshinon\\malshinon\\DAL2.cs",
+              "RelativeToolTip": "malshinon\\DAL2.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAD0AAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-09T21:49:39.027Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Generate secret code.cs",
               "DocumentMoniker": "C:\\Users\\shuki\\Desktop\\malshinon\\malshinon\\Generate secret code.cs",
               "RelativeDocumentMoniker": "malshinon\\Generate secret code.cs",
@@ -85,46 +115,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "DAL.cs",
-              "DocumentMoniker": "C:\\Users\\shuki\\Desktop\\malshinon\\malshinon\\DAL.cs",
-              "RelativeDocumentMoniker": "malshinon\\DAL.cs",
-              "ToolTip": "C:\\Users\\shuki\\Desktop\\malshinon\\malshinon\\DAL.cs",
-              "RelativeToolTip": "malshinon\\DAL.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-09T08:26:00.385Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Reporter flow.cs",
               "DocumentMoniker": "C:\\Users\\shuki\\Desktop\\malshinon\\malshinon\\Reporter flow.cs",
               "RelativeDocumentMoniker": "malshinon\\Reporter flow.cs",
-              "ToolTip": "C:\\Users\\shuki\\Desktop\\malshinon\\malshinon\\Reporter flow.cs*",
-              "RelativeToolTip": "malshinon\\Reporter flow.cs*",
-              "ViewState": "AgIAADsAAAAAAAAAAAAQwEQAAAAzAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\shuki\\Desktop\\malshinon\\malshinon\\Reporter flow.cs",
+              "RelativeToolTip": "malshinon\\Reporter flow.cs",
+              "ViewState": "AgIAADsAAAAAAAAAAAAAAEsAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-09T08:22:06.9Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "People.cs",
               "DocumentMoniker": "C:\\Users\\shuki\\Desktop\\malshinon\\malshinon\\People.cs",
               "RelativeDocumentMoniker": "malshinon\\People.cs",
               "ToolTip": "C:\\Users\\shuki\\Desktop\\malshinon\\malshinon\\People.cs",
               "RelativeToolTip": "malshinon\\People.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAuwBgAAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwBgAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-09T07:57:56.014Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\shuki\\Desktop\\malshinon\\malshinon\\Program.cs",
               "RelativeDocumentMoniker": "malshinon\\Program.cs",

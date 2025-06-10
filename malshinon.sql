@@ -26,3 +26,15 @@ CREATE TABLE IF NOT EXISTS IntelReports(
     FOREIGN KEY(reportr_id) REFERENCES People(id),
     FOREIGN KEY(target_id) REFERENCES People(id)
 );
+
+-- creat alerts tables with column
+CREATE TABLE IF NOT EXISTS alerts(
+    id INT AUTO_INCREMENT,
+    target_id INT,
+    created_at DATETIME DEFAULT NOW(), 
+    start_time DATETIME,
+    end_time DATETIME,
+    reason TEXT,
+    PRIMARY KEY(id),
+    FOREIGN KEY(target_id) REFERENCES People(id)
+);
