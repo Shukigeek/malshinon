@@ -120,7 +120,6 @@ namespace malshinon
             }
             finally
             {
-
                 closeConnection();
             }
         }
