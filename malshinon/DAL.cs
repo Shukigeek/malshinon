@@ -98,7 +98,8 @@ namespace malshinon
         {
             string secretCode = new Generate_secret_code().Generate();
             string query = @"INSERT INTO people (first_name, last_name, secret_code, type) " +
-                $"VALUES (@firstName, @lastName, @secretCode, @type)";
+                $"VALUES (@firstName, @lastName, @secretCode, @type);" +
+                $"SELECT LAST_INSERT_ID();";
             try
             {
                 openConnection();
@@ -109,26 +110,21 @@ namespace malshinon
                     cmd.Parameters.AddWithValue("@secretCode", secretCode);
                     cmd.Parameters.AddWithValue("@type", type);
 
-                    int rowsAffected = cmd.ExecuteNonQuery();
-                    if (rowsAffected > 0)
-                    {
-                        Console.WriteLine("person added successfully.");
-                    }
-                    else
-                    {
-                        Console.WriteLine("No person was added.");
-                    }
-                    using (MySqlDataReader reader = cmd.ExecuteReader()) 
-                    {
-                        People person = new People(reader.GetInt32("id"),
-                            reader.GetString("first_name"),
-                            reader.GetString("last_name"),
-                            reader.GetString("secretCode_code"),
-                            reader.GetString("type"),
-                            reader.GetInt32("num_reports"),
-                            reader.GetInt32("num_mention"));
-                        return person;
-                    }
+                    object result = cmd.ExecuteScalar();
+                    int newId = Convert.ToInt32(result);
+
+                    Console.WriteLine("Person added successfully.");
+
+                    return new People(
+                        newId,
+                        firstName,
+                        lastName,
+                        secretCode,
+                        type,
+                        0,  
+                        0
+                    );
+                
                 }
             }
             catch (Exception ex)

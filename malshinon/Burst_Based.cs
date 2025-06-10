@@ -36,11 +36,7 @@ namespace malshinon
                             reader.Close();
                             AddAlert(id, firstReportTime,
                                 lastReportTime, "Rapid reports detected");
-                            Console.WriteLine("alert creadet from burst_alert");
-                        }
-                        else
-                        {
-                            Console.WriteLine("no no no no no no no no =========");
+                            Console.WriteLine("alert created from burst_alert");
                         }
                     }
                 }

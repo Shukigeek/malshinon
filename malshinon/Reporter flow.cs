@@ -13,11 +13,12 @@ namespace malshinon
         DAL dal = new DAL();
         Thresholds thresholds = new Thresholds();
         Burst_Based Burst_Based = new Burst_Based();
-        public void Report()
+        public void Report(string name, string report)
         {
             //first question to reporter
             Console.WriteLine("Hi, please enter your full name.");
-            string[] fullName = Console.ReadLine().ToLower().Split(' ');
+            //string[] fullName = Console.ReadLine().ToLower().Split(' ');
+            string[] fullName = name.Split(' '); 
             while (fullName.Length < 2)
             {
                 Console.WriteLine("please enter valid full name..");
@@ -27,6 +28,7 @@ namespace malshinon
             People person = dal.SearchInPeopleTable(string.Join(" ", fullName.Take(fullName.Length - 1)), fullName.Last(), "reporter"); //
             //int IdReporter = dal.FindId(string.Join(" ", fullName.Take(fullName.Length - 1)), fullName.Last()); // 
             int IdReporter = person.Id;
+            Console.WriteLine(IdReporter);
             if (dal.IsType(IdReporter, "target"))
                 {
                     dal.UpdateType(IdReporter, "both");
@@ -34,8 +36,10 @@ namespace malshinon
 
             //seconed question to reporter
             Console.WriteLine("enter your report...");
-            string fullReport = Console.ReadLine();
-            string[] fullReport1 = fullReport.Split();
+            //string fullReport = Console.ReadLine();
+            //string[] fullReport1 = fullReport.Split();
+            string fullReport = report;
+            string[] fullReport1 = report.Split(' ');
 
             //Assume names are always in Capitalized First and Last Name format (from instructions)
             string targetFirstName = "";
@@ -49,8 +53,8 @@ namespace malshinon
                     break;
                 }
             }
-            person = dal.SearchInPeopleTable(targetFirstName,targetLastName, "target");
-            int IdTarget = person.Id;
+            People person2 = dal.SearchInPeopleTable(targetFirstName,targetLastName, "target");
+            int IdTarget = person2.Id;
             if (dal.IsType(IdTarget, "reporter"))
             {
                 dal.UpdateType(IdTarget, "both");
@@ -65,7 +69,7 @@ namespace malshinon
             }
             if (thresholds.ThreatAlert(IdTarget))
             {
-                Console.WriteLine($"NOTICE: {targetFirstName} {targetLastName} is a potential thret!\n~~~~~~~~~~ dangerous ~~~~~~~~~~~`");
+                Console.WriteLine($"NOTICE: {targetFirstName} {targetLastName} is a potential thret!\n~~~~~~~~~~ dangerous ~~~~~~~~~~~");
             }
             Burst_Based.BurstAlerts(IdTarget);
         }
