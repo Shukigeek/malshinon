@@ -44,6 +44,7 @@ namespace malshinon
 
                             Console.WriteLine("{0,-5} {1,-12} {2,-12} {3,-15} {4,-12} {5,-14}",
                                 id, firstName, lastName, secretCode, numReports, numMention);
+                            Console.WriteLine();
                         }
                     }
                 }

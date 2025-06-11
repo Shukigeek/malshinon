@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Org.BouncyCastle.Asn1.X509;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ExceptionServices;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,66 +14,82 @@ namespace malshinon
     {
         DAL dal = new DAL();
         Thresholds thresholds = new Thresholds();
-        Burst_Based Burst_Based = new Burst_Based();
-        public void Report(string name, string report)
+        AlertTable Burst_Based = new AlertTable();
+        PeopleTable peopleTable = new PeopleTable();
+        ReportTable reportTable = new ReportTable();
+        string allReport;
+
+        public People GetName(string name)
         {
             //first question to reporter
             Console.WriteLine("Hi, please enter your full name.");
             //string[] fullName = Console.ReadLine().ToLower().Split(' ');
-            string[] fullName = name.Split(' '); 
+            string[] fullName = name.Split(' ');
             while (fullName.Length < 2)
             {
                 Console.WriteLine("please enter valid full name..");
                 fullName = Console.ReadLine().ToLower().Split(' ');
             }
-            
-            People person = dal.SearchInPeopleTable(string.Join(" ", fullName.Take(fullName.Length - 1)), fullName.Last(), "reporter"); //
-            //int IdReporter = dal.FindId(string.Join(" ", fullName.Take(fullName.Length - 1)), fullName.Last()); // 
-            int IdReporter = person.Id;
+            string firstName = string.Join(" ", fullName.Take(fullName.Length - 1));
+            string lastName = fullName.Last();
+
+            People reporter = peopleTable.SearchInPeopleTable(firstName,lastName, "reporter");
+            int IdReporter = reporter.Id;
             Console.WriteLine(IdReporter);
             if (dal.IsType(IdReporter, "target"))
-                {
-                    dal.UpdateType(IdReporter, "both");
-                }
-
+            {
+                peopleTable.UpdateType(IdReporter, "both", reporter);
+            }
+            return reporter;
+        }
+        public People GetReport(string report)
+        {
             //seconed question to reporter
             Console.WriteLine("enter your report...");
             //string fullReport = Console.ReadLine();
-            //string[] fullReport1 = fullReport.Split();
+            //string[] fullReport2 = fullReport.Split();
             string fullReport = report;
-            string[] fullReport1 = report.Split(' ');
+            allReport = fullReport;
+            string[] fullReport2 = report.Split(' ');
 
             //Assume names are always in Capitalized First and Last Name format (from instructions)
             string targetFirstName = "";
             string targetLastName = "";
             for (int i = 0; i < fullReport.Length; i++) 
             {
-                if (char.IsUpper(fullReport1[i][0]))
+                if (char.IsUpper(fullReport2[i][0]))
                 {
-                    targetFirstName = fullReport1[i].ToLower();
-                    targetLastName = fullReport1[i + 1].ToLower();
+                    targetFirstName = fullReport2[i].ToLower();
+                    targetLastName = fullReport2[i + 1].ToLower();
                     break;
                 }
             }
-            People person2 = dal.SearchInPeopleTable(targetFirstName,targetLastName, "target");
-            int IdTarget = person2.Id;
+            People target = peopleTable.SearchInPeopleTable(targetFirstName,targetLastName, "target");
+            int IdTarget = target.Id;
             if (dal.IsType(IdTarget, "reporter"))
             {
-                dal.UpdateType(IdTarget, "both");
+                peopleTable.UpdateType(IdTarget, "both",target);
             }
-            dal.InsertReport(IdReporter, IdTarget, fullReport);
-            dal.IncrementNumReports(IdReporter);
-            dal.IncrementNumMentions(IdTarget);
-            if (thresholds.IsPotentialAgent(IdReporter))
+            return target;
+            
+        }
+        public void PogramFlow(string name,string report)
+        {
+            People reporter = GetName(name);
+            People target = GetReport(report);
+            reportTable.InsertReport(reporter.Id,target.Id, allReport);
+            peopleTable.IncrementNumReports(reporter.Id, reporter);
+            peopleTable.IncrementNumMentions(target.Id, target);
+            if (thresholds.IsPotentialAgent(reporter.Id))
             {
-                dal.UpdateType(IdReporter, "potential_agent");
-                Console.WriteLine($"{string.Join(" ",fullName)} is potiantial agent");
+                peopleTable.UpdateType(reporter.Id, "potential_agent", reporter);
+                Console.WriteLine($"{reporter.FirstName} {reporter.LastName} is potiantial agent");
             }
-            if (thresholds.ThreatAlert(IdTarget))
+            if (thresholds.ThreatAlert(target.Id))
             {
-                Console.WriteLine($"NOTICE: {targetFirstName} {targetLastName} is a potential thret!\n~~~~~~~~~~ dangerous ~~~~~~~~~~~");
+                Console.WriteLine($"NOTICE: {target.FirstName} {target.LastName} is a potential thret!\n~~~~~~~~~~ dangerous ~~~~~~~~~~~");
             }
-            Burst_Based.BurstAlerts(IdTarget);
+            Burst_Based.BurstAlerts(target.Id);
         }
     }
 }

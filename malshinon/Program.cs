@@ -13,7 +13,7 @@ namespace malshinon
             Reporter_flow report = new Reporter_flow();
             for (int i = 0; i < 20; i++)
             {
-                report.Report("dor perz","Achmed Yasiin hkjlhgjftdrspoiuyer,mlknbjhvgcfxm,nbvcxkojlihugyftdr,mnbcvxjlkfhdm.,nbvcxjkldfnkbjvhcgxdknjbvhcgxfmnbcvxjklgdfkjbvhcgxfjkhfgtdrsoiutru98y7t6re54nkjbvhcgxdmnb vchkgjfdsu98y7t6r5e4kjbvhcgxdjihugfydtr");
+                report.PogramFlow("dor perz","Achmed Yasiin hkjlhgjftdrspoiuyer,mlknbjhvgcfxm,nbvcxkojlihugyftdr,mnbcvxjlkfhdm.,nbvcxjkldfnkbjvhcgxdknjbvhcgxfmnbcvxjklgdfkjbvhcgxfjkhfgtdrsoiutru98y7t6re54nkjbvhcgxdmnb vchkgjfdsu98y7t6r5e4kjbvhcgxdjihugfydtr");
             }
             AnalysisMenu menu = new AnalysisMenu();
             menu.GetPotnetailAgents();

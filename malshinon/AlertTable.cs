@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace malshinon
 {
-    internal class Burst_Based
+    internal class AlertTable
     {
         DAL dal = new DAL();
         public void BurstAlerts(int id)

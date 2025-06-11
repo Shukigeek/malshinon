@@ -63,7 +63,69 @@ namespace malshinon
             }
 
         }
+        //could be eares
+        public int FindId(string firstName, string lastName)
+        {
+            string query = @"SELECT p.id FROM People p WHERE p.first_name = @firstName AND p.last_name = @lastName";
+            MySqlDataReader reader = null;
+            try
+            {
+                
+                using (MySqlCommand cmd = new MySqlCommand(query, dal.openConnection()))
+                {
+                    cmd.Parameters.AddWithValue("@firstName", firstName);
+                    cmd.Parameters.AddWithValue("@lastName", lastName);
+                    using (reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            int num = reader.GetInt32("id");
+                            return num;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error while fetching people: {ex.Message}");
+            }
+            finally
+            {
+                if (reader != null && !reader.IsClosed)
+                    reader.Close();
+            }
+            return 0;
+        }
 
+
+        //could be eares
+        public bool IsType(int id, string type)
+        {
+            string query = "SELECT p.type FROM people p WHERE p.id = @id";
+            try
+            {
+                
+                using (MySqlCommand cmd = new MySqlCommand(query, dal.openConnection()))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+                    var reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        return type == reader.GetString("type");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error geting type: {ex.Message}");
+            }
+            
+            return false;
+        }
         //InsertIntelReport()
         //CreateAlert()
         //GetAlerts()

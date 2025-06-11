@@ -14,10 +14,10 @@ namespace malshinon
         public string SecretCode;
         public string Type;
         public int NumReports;
-        public int NumMention;
+        public int NumMentions;
 
         public People(int id, string firstName,string lastName,
-            string secretCode,string type,int numReports,int numMention)
+            string secretCode,string type,int numReports,int numMentions)
         {
             Id = id;
             FirstName = firstName;
@@ -25,7 +25,7 @@ namespace malshinon
             SecretCode = secretCode;
             Type = type;
             NumReports = numReports;
-            NumMention = numMention;
+            NumMentions = numMentions;
         }
         //public override string ToString() 
         //{
