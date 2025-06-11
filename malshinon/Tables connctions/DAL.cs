@@ -53,11 +53,5 @@ namespace malshinon
                 Console.WriteLine($"General Error: {ex.Message}");
             }
         }
-        
-
-       
-
-        
-
     }
 }
