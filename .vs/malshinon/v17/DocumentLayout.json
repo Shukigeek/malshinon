@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{80B58942-4B4A-433C-BB44-12DF62FCC3FF}|malshinon\\malshinon.csproj|solutionrelative:malshinon\\analysismenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{80B58942-4B4A-433C-BB44-12DF62FCC3FF}|malshinon\\malshinon.csproj|c:\\users\\shuki\\desktop\\malshinon\\malshinon\\tables connctions\\alerttable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{80B58942-4B4A-433C-BB44-12DF62FCC3FF}|malshinon\\malshinon.csproj|solutionrelative:malshinon\\tables connctions\\alerttable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{80B58942-4B4A-433C-BB44-12DF62FCC3FF}|malshinon\\malshinon.csproj|c:\\users\\shuki\\desktop\\malshinon\\malshinon\\tables connctions\\getfrompeopletable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{80B58942-4B4A-433C-BB44-12DF62FCC3FF}|malshinon\\malshinon.csproj|solutionrelative:malshinon\\tables connctions\\getfrompeopletable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -30,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -39,6 +43,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "AlertTable.cs",
+              "DocumentMoniker": "C:\\Users\\shuki\\Desktop\\malshinon\\malshinon\\Tables connctions\\AlertTable.cs",
+              "RelativeDocumentMoniker": "malshinon\\Tables connctions\\AlertTable.cs",
+              "ToolTip": "C:\\Users\\shuki\\Desktop\\malshinon\\malshinon\\Tables connctions\\AlertTable.cs",
+              "RelativeToolTip": "malshinon\\Tables connctions\\AlertTable.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-11T14:10:35.155Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "getFromPeopleTable.cs",
               "DocumentMoniker": "C:\\Users\\shuki\\Desktop\\malshinon\\malshinon\\Tables connctions\\getFromPeopleTable.cs",
               "RelativeDocumentMoniker": "malshinon\\Tables connctions\\getFromPeopleTable.cs",
@@ -55,16 +72,16 @@
               "Title": "AnalysisMenu.cs",
               "DocumentMoniker": "C:\\Users\\shuki\\Desktop\\malshinon\\malshinon\\AnalysisMenu.cs",
               "RelativeDocumentMoniker": "malshinon\\AnalysisMenu.cs",
-              "ToolTip": "C:\\Users\\shuki\\Desktop\\malshinon\\malshinon\\AnalysisMenu.cs*",
-              "RelativeToolTip": "malshinon\\AnalysisMenu.cs*",
-              "ViewState": "AgIAAJEAAAAAAAAAAAAkwKkAAAAcAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\shuki\\Desktop\\malshinon\\malshinon\\AnalysisMenu.cs",
+              "RelativeToolTip": "malshinon\\AnalysisMenu.cs",
+              "ViewState": "AgIAAIMAAAAAAAAAAAAgwBcAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-10T13:52:58.426Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Thresholds.cs",
               "DocumentMoniker": "C:\\Users\\shuki\\Desktop\\malshinon\\malshinon\\Thresholds.cs",
               "RelativeDocumentMoniker": "malshinon\\Thresholds.cs",
@@ -77,7 +94,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Reporter flow.cs",
               "DocumentMoniker": "C:\\Users\\shuki\\Desktop\\malshinon\\malshinon\\Reporter flow.cs",
               "RelativeDocumentMoniker": "malshinon\\Reporter flow.cs",
@@ -90,7 +107,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\shuki\\Desktop\\malshinon\\malshinon\\Program.cs",
               "RelativeDocumentMoniker": "malshinon\\Program.cs",

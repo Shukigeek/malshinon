@@ -58,7 +58,7 @@ namespace malshinon
 
         public void GetPotnetailAgents()
         {
-            string query = "SELECT CONCAT(p.first_name, ' ', p.last_name) AS 'full name',p.num_reports,AVG(CHAR_LENGTH(i.text)) AS 'avrege length' FROM people p JOIN intelreports i WHERE p.type = 'potential_agent'";
+            string query = "SELECT CONCAT(p.first_name, ' ', p.last_name) AS 'full name',p.num_reports,AVG(CHAR_LENGTH(i.text)) AS 'avrege length' FROM people p JOIN intelreports i WHERE p.type = 'potential_agent' GROUP BY p.id";
             try
             {
                 using (MySqlCommand cmd = new MySqlCommand(query, dal.openConnection()))
