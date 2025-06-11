@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS People(
     secret_code VARCHAR(50) UNIQUE,
     type ENUM('reporter','target','both','potential_agent'),
     num_reports INT DEFAULT(0),
-    num_mentons INT DEFAULT(0), 
+    num_mentions INT DEFAULT(0), 
     PRIMARY KEY(id)
 );
 -- creat intel reports table with columns
@@ -24,5 +24,17 @@ CREATE TABLE IF NOT EXISTS IntelReports(
     timestamp DATETIME DEFAULT NOW(), 
     PRIMARY KEY(id),
     FOREIGN KEY(reportr_id) REFERENCES People(id),
+    FOREIGN KEY(target_id) REFERENCES People(id)
+);
+
+-- creat alerts tables with column
+CREATE TABLE IF NOT EXISTS alerts(
+    id INT AUTO_INCREMENT,
+    target_id INT,
+    created_at DATETIME DEFAULT NOW(), 
+    start_time DATETIME,
+    end_time DATETIME,
+    reason TEXT,
+    PRIMARY KEY(id),
     FOREIGN KEY(target_id) REFERENCES People(id)
 );
