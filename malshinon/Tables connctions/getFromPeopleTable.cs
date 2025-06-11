@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace malshinon
 {
-    internal class DAL2
+    internal class getFromPeopleTable
     {
         DAL dal = new DAL();
         public void GetPersonByName(string firstName,string lastName)
