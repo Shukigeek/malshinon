@@ -53,30 +53,7 @@ namespace malshinon
                 Console.WriteLine($"General Error: {ex.Message}");
             }
         }
-        public People SearchInPeopleTable(string firstName, string lastName, string type)
-        {
-            string query = @"SELECT p.id FROM People p WHERE p.first_name = @firstName AND p.last_name = @lastName";
-            People person = null;
-            MySqlDataReader reader = null;
-            try
-            {
-                openConnection();
-                using (MySqlCommand cmd = new MySqlCommand(query, _conn))
-                {
-                    cmd.Parameters.AddWithValue("@firstName", firstName);
-                    cmd.Parameters.AddWithValue("@lastName", lastName);
 
-                    using (reader = cmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            person = new People(reader.GetInt32("id"), firstName, lastName, "", type, 0, 0);
-                        }
-                        if (person == null)
-                        {
-                            reader.Close();
-                            person = AddPeople(firstName, lastName, type);
-                        }
                         
                     }
                 }
@@ -175,69 +152,7 @@ namespace malshinon
             }
             return 0;
         }
-        public void InsertReport(int reporter_id, int target_id, string full_report)
-        {
-            DateTime timeStamp = DateTime.Now;
-            string query = @"INSERT INTO IntelReports (reportr_id,target_id,text,timestamp)" +
-                "VALUES (@reporterID,@targetID,@fullReport,@timeStamp)";
-            try
-            {
-                openConnection();
-                using (MySqlCommand cmd = new MySqlCommand(query, _conn))
-                {
-                    cmd.Parameters.AddWithValue("@reporterID", reporter_id);
-                    cmd.Parameters.AddWithValue("@targetID", target_id);
-                    cmd.Parameters.AddWithValue("@fullReport", full_report);
-                    cmd.Parameters.AddWithValue("@timeStamp", timeStamp);
-
-                    int rowsAffected = cmd.ExecuteNonQuery();
-                    if (rowsAffected > 0)
-                    {
-                        Console.WriteLine("report added successfully.");
-                    }
-                    else
-                    {
-                        Console.WriteLine("No report was added.");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error adding report: {ex.Message}");
-            }
-            finally
-            {
-
-                closeConnection();
-            }
-        }
-        public void IncrementColumn(string columnName ,int id)
-        {
-            string query = $"UPDATE people SET {columnName} = {columnName} + 1 WHERE people.id = @id;";
-            try
-            {
-                openConnection();
-                using (MySqlCommand cmd = new MySqlCommand(query, _conn))
-                {
-                    cmd.Parameters.AddWithValue("@id", id);
                    
-                    int rowsAffected = cmd.ExecuteNonQuery();
-                    if (rowsAffected > 0)
-                    {
-                        Console.WriteLine("increment report added successfully.");
-                    }
-                    else
-                    {
-                        Console.WriteLine("No increment was added.");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error updating person: {ex.Message}");
-            }
-            finally
-            {
 
                 closeConnection();
             }
@@ -270,35 +185,6 @@ namespace malshinon
             }
             return false;
         }
-        public void UpdateType(int id,string type)
-        {
-            string query = @"UPDATE people SET type = @type WHERE people.id = @id;";
-            try
-            {
-                openConnection();
-                using(MySqlCommand cmd = new MySqlCommand( query, _conn))
-                {
-                    cmd.Parameters.AddWithValue("@type", type);
-                    cmd.Parameters.AddWithValue("@id", id);
-                    int rowsAffected = cmd.ExecuteNonQuery();
-                    if (rowsAffected > 0)
-                    {
-                        Console.WriteLine("update type");
-                    }
-                    else
-                    {
-                        Console.WriteLine("type didnet update.");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error updating person type: {ex.Message}");
-            }
-            finally
-            {
-                closeConnection();
-            }
 
         }
 
