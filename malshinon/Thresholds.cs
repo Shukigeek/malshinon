@@ -43,6 +43,8 @@ namespace malshinon
                 dal.closeConnection();
             }return false;
         }
+
+        //eares???
         public bool ThreatAlert(int id)
         {
             string query = "SELECT * FROM people p WHERE p.id = @id AND p.num_mentions >= 20";

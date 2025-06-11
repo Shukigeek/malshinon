@@ -100,7 +100,7 @@
     <Compile Include="Tables connctions\DAL.cs" />
     <Compile Include="Generate secret code.cs" />
     <Compile Include="class\People.cs" />
-    <Compile Include="Tables connctions\DAL2.cs" />
+    <Compile Include="Tables connctions\getFromPeopleTable.cs" />
     <Compile Include="Tables connctions\PeopleTable.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

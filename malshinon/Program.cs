@@ -11,8 +11,8 @@ namespace malshinon
         static void Main(string[] args)
         {
             AnalysisMenu menu = new AnalysisMenu();
-            menu.GetPotnetailAgents();
-            menu.GetDangerousTargets();
+            menu.Manu();
+            //menu.GetActiveAlert();
         }
     }
 }

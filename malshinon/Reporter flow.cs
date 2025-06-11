@@ -12,19 +12,19 @@ namespace malshinon
 {
     internal class Reporter_flow
     {
-        DAL dal = new DAL();
+        
         Thresholds thresholds = new Thresholds();
         AlertTable Burst_Based = new AlertTable();
         PeopleTable peopleTable = new PeopleTable();
         ReportTable reportTable = new ReportTable();
         string allReport;
 
-        public People GetName(string name)
+        public People GetName()
         {
             //first question to reporter
             Console.WriteLine("Hi, please enter your full name.");
-            //string[] fullName = Console.ReadLine().ToLower().Split(' ');
-            string[] fullName = name.Split(' ');
+            string[] fullName = Console.ReadLine().ToLower().Split(' ');
+            
             while (fullName.Length < 2)
             {
                 Console.WriteLine("please enter valid full name..");
@@ -36,21 +36,21 @@ namespace malshinon
             People reporter = peopleTable.SearchInPeopleTable(firstName,lastName, "reporter");
             int IdReporter = reporter.Id;
             Console.WriteLine(IdReporter);
-            if (dal.IsType(IdReporter, "target"))
+            if (reporter.Type == "target")
             {
                 peopleTable.UpdateType(IdReporter, "both", reporter);
             }
             return reporter;
         }
-        public People GetReport(string report)
+        public People GetReport()
         {
             //seconed question to reporter
             Console.WriteLine("enter your report...");
-            //string fullReport = Console.ReadLine();
-            //string[] fullReport2 = fullReport.Split();
-            string fullReport = report;
+            string fullReport = Console.ReadLine();
+            string[] fullReport2 = fullReport.Split();
+            
             allReport = fullReport;
-            string[] fullReport2 = report.Split(' ');
+            
 
             //Assume names are always in Capitalized First and Last Name format (from instructions)
             string targetFirstName = "";
@@ -66,17 +66,17 @@ namespace malshinon
             }
             People target = peopleTable.SearchInPeopleTable(targetFirstName,targetLastName, "target");
             int IdTarget = target.Id;
-            if (dal.IsType(IdTarget, "reporter"))
+            if (target.Type ==  "reporter")
             {
                 peopleTable.UpdateType(IdTarget, "both",target);
             }
             return target;
             
         }
-        public void PogramFlow(string name,string report)
+        public void PogramFlow()
         {
-            People reporter = GetName(name);
-            People target = GetReport(report);
+            People reporter = GetName();
+            People target = GetReport();
             reportTable.InsertReport(reporter.Id,target.Id, allReport);
             peopleTable.IncrementNumReports(reporter.Id, reporter);
             peopleTable.IncrementNumMentions(target.Id, target);
@@ -85,7 +85,7 @@ namespace malshinon
                 peopleTable.UpdateType(reporter.Id, "potential_agent", reporter);
                 Console.WriteLine($"{reporter.FirstName} {reporter.LastName} is potiantial agent");
             }
-            if (thresholds.ThreatAlert(target.Id))
+            if (target.NumMentions >= 20)
             {
                 Console.WriteLine($"NOTICE: {target.FirstName} {target.LastName} is a potential thret!\n~~~~~~~~~~ dangerous ~~~~~~~~~~~");
             }
