@@ -9,11 +9,11 @@ namespace malshinon
 {
     internal class Report
     {
-        public int Id;
-        public int ReporterId;
-        public int TargetId;
-        public string Text;
-        public DateTime Timestamp;
+        public int Id {  get; set; }
+        public int ReporterId {  get; set; }
+        public int TargetId {  get; set; }
+        public string Text {  get; set; }
+        public DateTime Timestamp {  get; set; }
 
         public Report(int id ,int reporterId ,int targetId ,string text ,DateTime timeStamp) 
         {

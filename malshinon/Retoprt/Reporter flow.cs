@@ -1,4 +1,5 @@
-﻿using Org.BouncyCastle.Asn1.X509;
+﻿using malshinon.DAL;
+using Org.BouncyCastle.Asn1.X509;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +13,11 @@ namespace malshinon
 {
     internal class Reporter_flow
     {
-        
-        Thresholds thresholds = new Thresholds();
-        AlertTable Burst_Based = new AlertTable();
-        PeopleTable peopleTable = new PeopleTable();
-        ReportTable reportTable = new ReportTable();
+
+        ThersHolds thersholds = new ThersHolds();
+        DALalert Burst_Based = new DALalert();
+        DALpeople peopleTable = new DALpeople();
+        DALreport reportTable = new DALreport();
         string allReport;
 
         public People GetName()
@@ -80,7 +81,7 @@ namespace malshinon
             reportTable.InsertReport(reporter.Id,target.Id, allReport);
             peopleTable.IncrementNumReports(reporter.Id, reporter);
             peopleTable.IncrementNumMentions(target.Id, target);
-            if (thresholds.IsPotentialAgent(reporter.Id))
+            if (thersholds.IsPotentialAgent(reporter.Id))
             {
                 peopleTable.UpdateType(reporter.Id, "potential_agent", reporter);
                 Console.WriteLine($"{reporter.FirstName} {reporter.LastName} is potiantial agent");

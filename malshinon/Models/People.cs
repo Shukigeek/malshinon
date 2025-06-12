@@ -8,13 +8,13 @@ namespace malshinon
 {
     internal class People
     {
-        public int Id;
-        public string FirstName;
-        public string LastName;
-        public string SecretCode;
-        public string Type;
-        public int NumReports;
-        public int NumMentions;
+        public int Id {  get; set; }
+        public string FirstName {  get; set; }
+        public string LastName {  get; set; }
+        public string SecretCode {  get; set; }
+        public string Type {  get; set; }
+        public int NumReports {  get; set; }
+        public int NumMentions {  get; set; }
 
         public People(int id, string firstName,string lastName,
             string secretCode,string type,int numReports,int numMentions)
@@ -27,13 +27,5 @@ namespace malshinon
             NumReports = numReports;
             NumMentions = numMentions;
         }
-        //public override string ToString() 
-        //{
-        //    Console.WriteLine($"id: {Id}\n" +
-        //        $"first name: {FirstName}\n" +
-        //        $"last name: {LastName}\n" +
-        //        $"secret code: {SecretCode}" +
-        //        $" "
-        //}
     }
 }

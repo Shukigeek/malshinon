@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace malshinon
 {
-    internal class AlertTable
+    internal class DALalert
     {
-        DAL dal = new DAL();
+        DALconnction dal = new DALconnction();
         public void BurstAlerts(int id)
         {
             string query = "SELECT MIN(timestamp) AS first_report_time, " +

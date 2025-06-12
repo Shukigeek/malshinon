@@ -1,15 +1,16 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using MySql.Data.MySqlClient;
 using System.Text;
 using System.Threading.Tasks;
+using static Org.BouncyCastle.Crypto.Engines.SM2Engine;
 
-namespace malshinon
+namespace malshinon.DAL
 {
-    internal class Thresholds
+    internal class ThersHolds
     {
-        DAL dal = new DAL();
+        DALconnction dal = new DALconnction();
         public bool IsPotentialAgent(int id)
         {
             string query = "SELECT CONCAT(p.first_name, ' ', p.last_name) AS 'full name' " +
@@ -25,7 +26,7 @@ namespace malshinon
                 using (MySqlCommand cmd = new MySqlCommand(query, dal.openConnection()))
                 {
                     cmd.Parameters.AddWithValue("@id", id);
-                    using(reader = cmd.ExecuteReader())
+                    using (reader = cmd.ExecuteReader())
                     {
                         if (reader.Read())
                         {
@@ -38,39 +39,7 @@ namespace malshinon
             {
                 Console.WriteLine($"Error checking potentail agent: {ex.Message}");
             }
-            finally
-            { 
-                dal.closeConnection();
-            }return false;
-        }
-
-        //eares???
-        public bool ThreatAlert(int id)
-        {
-            string query = "SELECT * FROM people p WHERE p.id = @id AND p.num_mentions >= 20";
-            MySqlDataReader reader = null;
-            try
-            {
-                using (MySqlCommand cmd = new MySqlCommand(query, dal.openConnection()))
-                {
-                    cmd.Parameters.AddWithValue("@id", id);
-                    using (reader = cmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            return true;
-                        }
-                    }
-                }
-            }
-            catch (Exception ex) 
-            {
-                Console.WriteLine($"Error checking potentail thrat alert: {ex.Message}");
-            }
-            finally
-            {
-                dal.closeConnection();
-            }return false;
+            return false;
         }
     }
 }

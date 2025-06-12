@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace malshinon
 {
-    internal class ReportTable
+    internal class DALreport
     {
-        DAL dal = new DAL();
+        DALconnction dal = new DALconnction();
         public Report InsertReport(int reporter_id, int target_id, string full_report)
         {
             DateTime timeStamp = DateTime.Now;

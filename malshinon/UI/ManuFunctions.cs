@@ -1,64 +1,18 @@
 ﻿using MySql.Data.MySqlClient;
-using Org.BouncyCastle.Asn1.X509;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace malshinon
+namespace malshinon.UI
 {
-    internal class AnalysisMenu
+    internal class ManuFunctions
     {
-        DAL dal = new DAL();
-        Reporter_flow reporter_Flow = new Reporter_flow();
-        public void Manu()
-        {
-            bool online = true;
-            int num = 0;
-            while (online) {
-                Console.WriteLine("Analysis manu:\nchoose your option from 1-5");
-                Console.WriteLine("1: add new report\n" +
-                    "2: get potnetail agents\n" +
-                    "3: get dangerous target\n" +
-                    "4: get acvit alerts\n" +
-                    "5: exit program");
-                bool check = int.TryParse(Console.ReadLine(), out num);
-                if (num < 1 || num > 5) Console.WriteLine("enter number between 1 - 5");
-                if (check && num > 0 && num < 6) 
-                {
-                    Console.Clear();
-                    switch (num)
-                    {
-                        case 1:
-                            reporter_Flow.PogramFlow();
-                            Console.ReadKey();
-                            break;
-                        case 2:
-                            GetPotnetailAgents();
-                            Console.ReadKey();
-                            break;
-                        case 3:
-                            GetDangerousTargets();
-                            Console.ReadKey();
-                            break;
-                        case 4:
-                            GetActiveAlert();
-                            Console.ReadKey();
-                            break;
-                        case 5:
-                            online = false;
-                            Console.WriteLine("by!");
-                            break;
-                    }
-                }
-             }
-        }
-
-
+        DALconnction dal = new DALconnction();
         public void GetPotnetailAgents()
         {
-            string query = "SELECT CONCAT(p.first_name, ' ', p.last_name) AS 'full name',p.num_reports,AVG(CHAR_LENGTH(i.text)) AS 'avrege length' FROM people p JOIN intelreports i WHERE p.type = 'potential_agent'";
+            string query = "SELECT CONCAT(p.first_name, ' ', p.last_name) AS 'full name',p.num_reports,AVG(CHAR_LENGTH(i.text)) AS 'avrege length' FROM people p JOIN intelreports i WHERE p.type = 'potential_agent' GROUP BY p.id";
             try
             {
                 using (MySqlCommand cmd = new MySqlCommand(query, dal.openConnection()))
@@ -66,17 +20,17 @@ namespace malshinon
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
                         bool headLine = true;
-                        
+
                         while (reader.Read())
                         {
-                            if (headLine) 
+                            if (headLine)
                             {
                                 Console.WriteLine("{0,-15} {1,10} {2,17}",
                                 "Full Name", "Reports Count", "Average Length");
                                 Console.WriteLine(new string('-', 47));
                             }
                             headLine = false;
-                            string fullName = reader.GetString("full name"); 
+                            string fullName = reader.GetString("full name");
                             int numReports = reader.GetInt32("num_reports");
                             double avg = reader.GetInt32("avrege length");
 
@@ -92,11 +46,11 @@ namespace malshinon
                     }
                 }
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 Console.WriteLine($"Error geting potnetial agents: {ex.Message}");
             }
-            
+
 
         }
         public void GetDangerousTargets()
@@ -175,10 +129,77 @@ namespace malshinon
                     }
                 }
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 Console.WriteLine($"Error geting active alerts: {ex.Message}");
             }
+        }
+        public void GetPersonByName()
+        {
+            Console.WriteLine("enter first name:");
+            string firstName = Console.ReadLine(); 
+            Console.WriteLine("enter last name:");
+            string lastName = Console.ReadLine(); 
+            string query = "SELECT * FROM people p WHERE p.first_name = @firstName AND p.last_name = @lastName";
+            MySqlDataReader reader = null;
+            try
+            {
+                using (MySqlCommand cmd = new MySqlCommand(query, dal.openConnection()))
+                {
+                    cmd.Parameters.AddWithValue("@firstName", firstName);
+                    cmd.Parameters.AddWithValue("@lastName", lastName);
+                    using (reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            Console.WriteLine($"name: {reader.GetString("first_name")} {reader.GetString("last_name")} " +
+                                $"secret code: {reader.GetString("secret_code")} type: {reader.GetString("type")} " +
+                                $"num reporets: {reader.GetInt32("num_reports")} num mentions: {reader.GetInt32("num_mentions")}");
+                        }
+                        else
+                        {
+                            Console.WriteLine("no name found!");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error faching data on {firstName} {lastName}: {ex.ToString()}");
+            }
+
+        }
+        public void GetPersonBySecretCode()
+        {
+            Console.WriteLine("enter the secret code");
+            string secretCode = Console.ReadLine();
+            string query = "SELECT * FROM people p WHERE p.secret_code = @secretCode";
+            MySqlDataReader reader = null;
+            try
+            {
+                using (MySqlCommand cmd = new MySqlCommand(query, dal.openConnection()))
+                {
+                    cmd.Parameters.AddWithValue("@secretCode", secretCode);
+                    using (reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            Console.WriteLine($"name: {reader.GetString("first_name")} {reader.GetString("last_name")}" +
+                                $"secret code: {reader.GetString("secret_cade")} type: {reader.GetString("type")} " +
+                                $"numreporets: {reader.GetInt32("num_reports")} nummentions: {reader.GetInt32("num_mentions")}");
+                        }
+                        else 
+                        {
+                            Console.WriteLine("secter code not found!");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error faching data on {secretCode}: {ex.ToString()}");
+            }
+
         }
     }
 }

@@ -95,19 +95,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnalysisMenu.cs" />
-    <Compile Include="Tables connctions\AlertTable.cs" />
-    <Compile Include="Tables connctions\DAL.cs" />
-    <Compile Include="Generate secret code.cs" />
-    <Compile Include="class\People.cs" />
-    <Compile Include="Tables connctions\getFromPeopleTable.cs" />
-    <Compile Include="Tables connctions\PeopleTable.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="DAL\ThersHolds.cs" />
+    <Compile Include="UI\AnalysisMenu.cs" />
+    <Compile Include="DAL\DALalert.cs" />
+    <Compile Include="DAL\DALconnction.cs" />
+    <Compile Include="secret code\Generate secret code.cs" />
+    <Compile Include="Models\People.cs" />
+    <Compile Include="DAL\DALpeople.cs" />
+    <Compile Include="UI\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="class\Report.cs" />
-    <Compile Include="Reporter flow.cs" />
-    <Compile Include="Tables connctions\ReportTable.cs" />
-    <Compile Include="Thresholds.cs" />
+    <Compile Include="Models\Report.cs" />
+    <Compile Include="Retoprt\Reporter flow.cs" />
+    <Compile Include="DAL\DALreport.cs" />
+    <Compile Include="UI\ManuFunctions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
