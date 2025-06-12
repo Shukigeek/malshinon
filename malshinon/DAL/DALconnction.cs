@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace malshinon
 {
-    internal class DAL
+    internal class DALconnction
     {
         private string connStr = "server=localhost;user=root;password=;database=malshinon";
         private MySqlConnection _conn;
@@ -25,7 +25,7 @@ namespace malshinon
             if (_conn.State != System.Data.ConnectionState.Open)
             {
                 _conn.Open();
-                Console.WriteLine("Connection successful.");
+                //Console.WriteLine("Connection successful.");
             }
 
             return _conn;
@@ -38,7 +38,7 @@ namespace malshinon
                 _conn = null;
             }
         }
-        public DAL()
+        public DALconnction()
         {
             try
             {

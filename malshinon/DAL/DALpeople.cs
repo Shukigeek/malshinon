@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace malshinon
 {
-    internal class PeopleTable
+    internal class DALpeople
     {
-        DAL dal = new DAL();
+        DALconnction dal = new DALconnction();
         public People SearchInPeopleTable(string firstName, string lastName, string type)
         {
             string query = @"SELECT * FROM People p WHERE p.first_name = @firstName AND p.last_name = @lastName";
@@ -70,7 +70,7 @@ namespace malshinon
                     object result = cmd.ExecuteScalar();
                     int newId = Convert.ToInt32(result);
 
-                    Console.WriteLine("Person added successfully.");
+                    //Console.WriteLine("Person added successfully.");
 
                     return new People(
                         newId,
@@ -106,7 +106,7 @@ namespace malshinon
                             person.NumReports += 1;
                         if (columnName == "num_mentions")
                             person.NumMentions += 1;
-                        Console.WriteLine("increment report added successfully.");
+                        //Console.WriteLine("increment added successfully.");
                     }
                     else
                     {
@@ -134,12 +134,12 @@ namespace malshinon
                     int rowsAffected = cmd.ExecuteNonQuery();
                     if (rowsAffected > 0)
                     {
-                        Console.WriteLine("update type");
+                        //Console.WriteLine("update type");
                         person.Type = type;
                     }
                     else
                     {
-                        Console.WriteLine("type didnet update.");
+                        //Console.WriteLine("type didnet update.");
                     }
                 }
             }

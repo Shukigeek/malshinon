@@ -12,7 +12,7 @@ namespace malshinon
         {
             AnalysisMenu menu = new AnalysisMenu();
             menu.Manu();
-            //menu.GetActiveAlert();
+            
         }
     }
 }
