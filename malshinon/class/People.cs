@@ -27,13 +27,5 @@ namespace malshinon
             NumReports = numReports;
             NumMentions = numMentions;
         }
-        //public override string ToString() 
-        //{
-        //    Console.WriteLine($"id: {Id}\n" +
-        //        $"first name: {FirstName}\n" +
-        //        $"last name: {LastName}\n" +
-        //        $"secret code: {SecretCode}" +
-        //        $" "
-        //}
     }
 }
